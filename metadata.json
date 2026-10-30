@@ -1,0 +1,6 @@
+{
+  "name": "WebDial",
+  "description": "WebDial browser by Son Skr. Lightweight, fast web browser with smart speed dials and multi-tab browsing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
