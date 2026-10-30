@@ -90,3 +90,72 @@ data class SpeedDial(
       }
     }
 }
+
+/**
+ * Finds a matching speed dial from the saved list, or creates a synthetic SpeedDial
+ * with appropriate title, domain, favicon, and brand color based on the URL.
+ */
+fun findMatchingSpeedDial(url: String, speedDials: List<SpeedDial> = emptyList()): SpeedDial {
+  val cleanUrl = url.trim()
+  if (cleanUrl.isBlank()) {
+    return SpeedDial(title = "Web", url = "", position = 0)
+  }
+
+  val lowerUrl = cleanUrl.lowercase()
+
+  // 1. Try to find a match in the user's existing speed dials
+  val matched = speedDials.firstOrNull { sd ->
+    val sdDomain = sd.domain.lowercase()
+    lowerUrl.contains(sdDomain) || sdDomain.contains(lowerUrl)
+  }
+  if (matched != null) return matched
+
+  // 2. Derive host/domain safely
+  val domain = try {
+    val uri = if (cleanUrl.startsWith("http://", ignoreCase = true) || cleanUrl.startsWith("https://", ignoreCase = true)) {
+      URI(cleanUrl)
+    } else {
+      URI("https://$cleanUrl")
+    }
+    val host = uri.host ?: cleanUrl
+    host.removePrefix("www.")
+  } catch (e: Exception) {
+    cleanUrl.removePrefix("https://")
+      .removePrefix("http://")
+      .removePrefix("www.")
+      .split("/").firstOrNull()?.split("?")?.firstOrNull() ?: cleanUrl
+  }
+
+  val derivedTitle = when {
+    domain.contains("youtube") -> "YouTube"
+    domain.contains("google") -> "Google"
+    domain.contains("wikipedia") -> "Wikipedia"
+    domain.contains("amazon") -> "Amazon"
+    domain.contains("reddit") -> "Reddit"
+    domain.contains("twitter") || domain == "x.com" -> "X (Twitter)"
+    domain.contains("github") -> "GitHub"
+    domain.contains("yahoo") -> "Yahoo"
+    domain.contains("netflix") -> "Netflix"
+    domain.contains("chatgpt") || domain.contains("openai") -> "ChatGPT"
+    domain.contains("gemini") -> "Gemini"
+    domain.contains("qwen") -> "Qwen"
+    domain.contains("librechat") -> "LibreChat"
+    domain.contains("quora") -> "Quora"
+    domain.contains("pinterest") -> "Pinterest"
+    domain.contains("spotify") -> "Spotify"
+    domain.contains("instagram") -> "Instagram"
+    domain.contains("facebook") -> "Facebook"
+    domain.contains("linkedin") -> "LinkedIn"
+    domain.contains("tiktok") -> "TikTok"
+    domain.contains("telegram") -> "Telegram"
+    domain.contains("whatsapp") -> "WhatsApp"
+    else -> domain.split(".").firstOrNull()?.replaceFirstChar { it.uppercase() } ?: "Website"
+  }
+
+  return SpeedDial(
+    title = derivedTitle,
+    url = cleanUrl,
+    position = 0
+  )
+}
+

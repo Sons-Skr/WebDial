@@ -74,7 +74,5 @@ class MainActivity : ComponentActivity() {
 
   override fun onDestroy() {
     super.onDestroy()
-    // Terminate process when user closes the app so it never runs or lingers in the background
-    Process.killProcess(Process.myPid())
   }
 }

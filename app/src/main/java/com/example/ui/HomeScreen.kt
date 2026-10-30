@@ -132,6 +132,7 @@ fun HomeScreen(
           // Full screen Google WebView with only notificationbar at top and narrow toolbar at bottom
           BrowserWebView(
             url = uiState.activeUrl ?: "",
+            speedDials = uiState.speedDials,
             onUrlChange = onWebUrlChange,
             onPageTitleChange = onWebTitleChange,
             onClose = onCloseWebView,
@@ -259,10 +260,12 @@ fun TopSearchBarSection(
         singleLine = true,
         shape = CircleShape,
         colors = OutlinedTextFieldDefaults.colors(
-          focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f),
-          unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
+          focusedTextColor = MaterialTheme.colorScheme.onSurface,
+          unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+          focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+          unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f),
           focusedBorderColor = MaterialTheme.colorScheme.primary,
-          unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+          unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.7f)
         ),
         keyboardOptions = KeyboardOptions(
           keyboardType = KeyboardType.Uri,
@@ -293,21 +296,25 @@ fun NarrowBottomToolbar(
 ) {
   Surface(
     color = MaterialTheme.colorScheme.surface,
-    tonalElevation = 3.dp,
-    shadowElevation = 3.dp,
+    tonalElevation = 2.dp,
+    shadowElevation = 4.dp,
     modifier = modifier
       .fillMaxWidth()
-      .windowInsetsPadding(WindowInsets.navigationBars)
       .testTag("bottom_menu_bar")
   ) {
-    Row(
+    Column(
       modifier = Modifier
         .fillMaxWidth()
-        .height(48.dp) // Narrow toolbar
-        .padding(horizontal = 24.dp),
-      horizontalArrangement = Arrangement.SpaceAround,
-      verticalAlignment = Alignment.CenterVertically
+        .windowInsetsPadding(WindowInsets.navigationBars)
     ) {
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(48.dp) // Narrow toolbar
+          .padding(horizontal = 24.dp),
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically
+      ) {
       // 1. Add to speed dials
       IconButton(
         onClick = { onSelectTab("add_to_speed_dials") },
@@ -376,3 +383,5 @@ fun NarrowBottomToolbar(
     }
   }
 }
+}
+
