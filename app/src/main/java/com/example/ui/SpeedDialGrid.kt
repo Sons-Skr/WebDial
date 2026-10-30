@@ -21,13 +21,10 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.DriveFileRenameOutline
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
@@ -124,7 +121,7 @@ fun SpeedDialGrid(
                   },
                   trailingIcon = {
                     Icon(
-                      imageVector = Icons.AutoMirrored.Filled.NavigateNext,
+                      imageVector = AppIcons.NavigateNext,
                       contentDescription = null,
                       modifier = Modifier.size(18.dp)
                     )
@@ -172,7 +169,7 @@ fun SpeedDialGrid(
                   },
                   leadingIcon = {
                     Icon(
-                      imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                      imageVector = Icons.Default.ArrowBack,
                       contentDescription = "Back",
                       modifier = Modifier.size(16.dp)
                     )
@@ -187,7 +184,7 @@ fun SpeedDialGrid(
                   text = { Text("Rename") },
                   leadingIcon = {
                     Icon(
-                      imageVector = Icons.Default.DriveFileRenameOutline,
+                      imageVector = Icons.Default.Edit,
                       contentDescription = "Rename",
                       tint = MaterialTheme.colorScheme.primary
                     )
@@ -200,7 +197,7 @@ fun SpeedDialGrid(
                   text = { Text("Change website") },
                   leadingIcon = {
                     Icon(
-                      imageVector = Icons.Default.Language,
+                      imageVector = AppIcons.Language,
                       contentDescription = "Change website",
                       tint = MaterialTheme.colorScheme.primary
                     )

@@ -11,9 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BookmarkAdd
-import androidx.compose.material.icons.filled.DriveFileRenameOutline
-import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -47,7 +45,7 @@ fun AddSpeedDialDialog(
     onDismissRequest = onDismiss,
     icon = {
       Icon(
-        imageVector = Icons.Default.BookmarkAdd,
+        imageVector = AppIcons.BookmarkAdd,
         contentDescription = null,
         tint = MaterialTheme.colorScheme.primary
       )
@@ -164,7 +162,7 @@ fun RenameSpeedDialDialog(
     onDismissRequest = onDismiss,
     icon = {
       Icon(
-        imageVector = Icons.Default.DriveFileRenameOutline,
+        imageVector = Icons.Default.Edit,
         contentDescription = null,
         tint = MaterialTheme.colorScheme.primary
       )
@@ -233,7 +231,7 @@ fun ChangeWebsiteDialog(
     onDismissRequest = onDismiss,
     icon = {
       Icon(
-        imageVector = Icons.Default.Language,
+        imageVector = AppIcons.Language,
         contentDescription = null,
         tint = MaterialTheme.colorScheme.primary
       )

@@ -36,7 +36,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.WifiOff
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
@@ -328,7 +328,7 @@ fun BrowserWebView(
             contentAlignment = Alignment.Center
           ) {
             Icon(
-              imageVector = Icons.Default.WifiOff,
+              imageVector = Icons.Default.Warning,
               contentDescription = null,
               tint = MaterialTheme.colorScheme.onErrorContainer,
               modifier = Modifier.size(32.dp)

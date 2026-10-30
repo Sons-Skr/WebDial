@@ -30,7 +30,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -311,7 +310,7 @@ fun TabCard(
               contentScale = ContentScale.Fit,
               error = {
                 Icon(
-                  imageVector = Icons.Default.Language,
+                  imageVector = AppIcons.Language,
                   contentDescription = null,
                   modifier = Modifier.size(15.dp)
                 )
@@ -398,7 +397,7 @@ fun TabCard(
               contentScale = ContentScale.Fit,
               error = {
                 Icon(
-                  imageVector = Icons.Default.Language,
+                  imageVector = AppIcons.Language,
                   contentDescription = null,
                   modifier = Modifier.size(32.dp),
                   tint = MaterialTheme.colorScheme.primary
